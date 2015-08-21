@@ -12,11 +12,12 @@ function getTodoState() {
 }
 
 var TodoApp = React.createClass({
+
   getInitialState: function() {
     return getTodoState();
   },
 
-  componentDidMount: function(){
+  componentDidMount: function() {
     TodoStore.addChangeListener(this._onChange);
   },
 
@@ -27,12 +28,12 @@ var TodoApp = React.createClass({
   render: function() {
     return (
       <div>
-        <Header/>
+        <Header />
         <MainSection
           allTodos={this.state.allTodos}
           areAllComplete={this.state.areAllComplete}
         />
-      <Footer allTodos={this.state.allTodos} />
+        <Footer allTodos={this.state.allTodos} />
       </div>
     );
   },

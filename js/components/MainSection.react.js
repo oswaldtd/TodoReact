@@ -11,7 +11,6 @@ var MainSection = React.createClass({
   },
 
   render: function() {
-
     if (Object.keys(this.props.allTodos).length < 1) {
       return null;
     }

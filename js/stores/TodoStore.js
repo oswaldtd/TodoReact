@@ -8,7 +8,6 @@ var CHANGE_EVENT = 'change';
 var _todos = {};
 
 function create(text) {
-
   var id = (+new Date() + Math.floor(Math.random() * 999999)).toString(36);
   _todos[id] = {
     id: id,
@@ -57,6 +56,7 @@ var TodoStore = assign({}, EventEmitter.prototype, {
   emitChange: function() {
     this.emit(CHANGE_EVENT);
   },
+
 
   addChangeListener: function(callback) {
     this.on(CHANGE_EVENT, callback);
@@ -115,8 +115,6 @@ AppDispatcher.register(function(action) {
       destroyCompleted();
       TodoStore.emitChange();
       break;
-
-    default:
   }
 });
 

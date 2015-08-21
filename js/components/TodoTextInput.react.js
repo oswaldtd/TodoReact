@@ -27,7 +27,7 @@ var TodoTextInput = React.createClass({
         placeholder={this.props.placeholder}
         onBlur={this._save}
         onChange={this._onChange}
-        onKeyDown={this.onKeyDown}
+        onKeyDown={this._onKeyDown}
         value={this.state.value}
         autoFocus={true}
       />

@@ -5,22 +5,23 @@ var TodoTextInput = require('./TodoTextInput.react');
 var Header = React.createClass({
 
   render: function() {
-  return (
-    <header id='header'>
-      <h1>todos</h1>
-      <TodoTextInput
-        id="new-todo"
-        placeholder="What needs to be done?"
-        onSave={this._onSave}
+    return (
+      <header id="header">
+        <h1>todos</h1>
+        <TodoTextInput
+          id="new-todo"
+          placeholder="What needs to be done?"
+          onSave={this._onSave}
         />
-    </header>
-  );
-},
+      </header>
+    );
+  },
 
-_onSave: function(text) {
-  TodoActions.create(text);
-}
-
+  _onSave: function(text) {
+    if (text.trim()){
+      TodoActions.create(text);
+    }
+  }
 });
 
 module.exports = Header;
