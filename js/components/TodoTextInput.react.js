@@ -19,8 +19,7 @@ var TodoTextInput = React.createClass({
     };
   },
 
-
-  render: function() /*object*/ {
+  render: function() {
     return (
       <input
         className={this.props.className}
@@ -28,13 +27,12 @@ var TodoTextInput = React.createClass({
         placeholder={this.props.placeholder}
         onBlur={this._save}
         onChange={this._onChange}
-        onKeyDown={this._onKeyDown}
+        onKeyDown={this.onKeyDown}
         value={this.state.value}
         autoFocus={true}
       />
     );
   },
-
 
   _save: function() {
     this.props.onSave(this.state.value);
@@ -43,20 +41,17 @@ var TodoTextInput = React.createClass({
     });
   },
 
-
-  _onChange: function(/*object*/ event) {
+  _onChange: function(event) {
     this.setState({
       value: event.target.value
     });
   },
-
 
   _onKeyDown: function(event) {
     if (event.keyCode === ENTER_KEY_CODE) {
       this._save();
     }
   }
-
 });
 
 module.exports = TodoTextInput;

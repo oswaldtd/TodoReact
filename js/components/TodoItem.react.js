@@ -8,7 +8,7 @@ var classNames = require('classnames');
 var TodoItem = React.createClass({
 
   propTypes: {
-    todo: ReactPropTypes.object.isRequired
+    todo: React.PropTypes.object.isRequired
   },
 
   getInitialState: function() {
@@ -18,20 +18,20 @@ var TodoItem = React.createClass({
   },
 
   render: function() {
-    var todo = this.props todo;
+    var todo = this.props.todo;
 
     var input;
-    if(this.state.isEditing) {
+    if (this.state.isEditing) {
       input =
-      <TodoTextInput
-        className="edit"
-        onSave={this._onSave}
-        value={todo.text}
-      />;
+        <TodoTextInput
+          className='edit'
+          onSave={this._onSave}
+          value={todo.text}
+        />;
     }
 
     return (
-      <li>
+      <li
         className={classNames({
           'completed': todo.complete,
           'editing': this.state.isEditing
@@ -39,15 +39,15 @@ var TodoItem = React.createClass({
         key={todo.id}>
         <div className="view">
           <input
-            className="toggle"
-            type="checkbox"
+            className='toggle'
+            type='checkbox'
             checked={todo.complete}
             onChange={this._onToggleComplete}
           />
-          <label onDoubleClick={this._onDoubleClick}>
-            {todo.text}
-          </label>
-          <button className="destroy" onClick={this._onDestroyClick} />
+        <label onDoubleClick={this._onDoubleClick}>
+          {todo.text}
+        </label>
+          <button className='destroy' onClick={this._onDestroyClick}/>
         </div>
         {input}
       </li>
@@ -70,5 +70,6 @@ var TodoItem = React.createClass({
   _onDestroyClick: function() {
     TodoActions.destroy(this.props.todo.id);
   }
-
 });
+
+module.exports = TodoItem;
